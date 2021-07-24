@@ -12,7 +12,11 @@ Source0:        %{url}/archive/v%{version}/%{real_name}-%{version}.tar.gz
 # Build GStreamer plugin from tree directly
 Patch0:         %{name}-gst.patch
 
-BuildRequires:  cmake
+%if 0%{?rhel} == 7
+BuildRequires:  cmake3 >= 3.5
+%else
+BuildRequires:  cmake >= 3.5
+%endif
 BuildRequires:  gcc
 BuildRequires:  meson
 BuildRequires:  pkgconfig(gstreamer-1.0) >= 1.8
@@ -55,7 +59,12 @@ This package provides an %{real_name} based GStreamer plug-in.
 
 %build
 # Do not use 'Release' build or it hardcodes compiler settings:
-%cmake -G Ninja -DCMAKE_BUILD_TYPE='Fedora'
+%if 0%{?rhel} == 7
+%cmake3 \
+%else
+%cmake \
+%endif
+ -G Ninja -DCMAKE_BUILD_TYPE='Fedora'
 %ninja_build
 
 pushd gstreamer-plugin
