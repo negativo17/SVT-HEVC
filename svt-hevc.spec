@@ -2,7 +2,7 @@
 %global real_name SVT-HEVC
 
 Name:           svt-hevc
-Version:        1.5.0
+Version:        1.5.1
 Release:        1%{?dist}
 Summary:        Scalable Video Technology for HEVC Encoder
 License:        BSD-2-Clause-Patent
@@ -87,5 +87,8 @@ popd
 %{_libdir}/gstreamer-1.0/libgstsvthevcenc.so
 
 %changelog
+* Sat Jul 24 2021 Simone Caronni <negativo17@gmail.com> - 1.5.1-1
+- Update to 1.5.1.
+
 * Thu Nov 26 2020 Simone Caronni <negativo17@gmail.com> - 1.5.0-1
 - First build, make it build also on CentOS/RHEL 7 with rebased GStreamer.
