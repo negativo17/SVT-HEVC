@@ -9,7 +9,7 @@ License:        BSD-2-Clause-Patent
 URL:            https://github.com/OpenVisualCloud/%{real_name}
 
 Source0:        %{url}/archive/v%{version}/%{real_name}-%{version}.tar.gz
-%if 0%{?rhel} || 0%{?fedora} == 33 || 0%{?fedora} == 34
+%if 0%{?rhel} || 0%{?fedora} == 34
 # Build GStreamer plugin from tree directly
 Patch0:         %{name}-gst.patch
 %endif
@@ -21,7 +21,7 @@ BuildRequires:  cmake >= 3.5
 %endif
 BuildRequires:  gcc
 BuildRequires:  meson
-%if 0%{?rhel} || 0%{?fedora} == 33 || 0%{?fedora} == 34
+%if 0%{?rhel} || 0%{?fedora} == 34
 BuildRequires:  pkgconfig(gstreamer-1.0) >= 1.8
 BuildRequires:  pkgconfig(gstreamer-base-1.0) >= 1.8
 BuildRequires:  pkgconfig(gstreamer-video-1.0) >= 1.8
@@ -51,7 +51,7 @@ Requires:       %{name}-libs%{?_isa} = %{version}-%{release}
 The %{name}-devel package contains libraries and header files for developing
 applications that use %{name}.
 
-%if 0%{?rhel} || 0%{?fedora} == 33 || 0%{?fedora} == 34
+%if 0%{?rhel} || 0%{?fedora} == 34
 %package -n     gstreamer1-%{name}
 Summary:        GStreamer 1.0 %{real_name} plug-in
 Requires:       gstreamer1-plugins-base%{?_isa} >= 1.8
@@ -73,7 +73,7 @@ This package provides an %{real_name} based GStreamer plug-in.
  -G Ninja -DCMAKE_BUILD_TYPE='Fedora'
 %ninja_build
 
-%if 0%{?rhel} || 0%{?fedora} == 33 || 0%{?fedora} == 34
+%if 0%{?rhel} || 0%{?fedora} == 34
 pushd gstreamer-plugin
 export LIBRARY_PATH="$PWD/../Bin/Fedora:$LIBRARY_PATH"
 %meson
@@ -83,7 +83,7 @@ popd
 
 %install
 %ninja_install
-%if 0%{?rhel} || 0%{?fedora} == 33 || 0%{?fedora} == 34
+%if 0%{?rhel} || 0%{?fedora} == 34
 pushd gstreamer-plugin
 %meson_install
 popd
@@ -102,7 +102,7 @@ popd
 %{_libdir}/libSvtHevcEnc.so
 %{_libdir}/pkgconfig/SvtHevcEnc.pc
 
-%if 0%{?rhel} || 0%{?fedora} == 33 || 0%{?fedora} == 34
+%if 0%{?rhel} || 0%{?fedora} == 34
 %files -n gstreamer1-%{name}
 %{_libdir}/gstreamer-1.0/libgstsvthevcenc.so
 %endif
